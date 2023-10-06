@@ -1,0 +1,16 @@
+name: Experimental Testing
+run-name: build and run experimental
+on: [push]
+jobs:
+  x86_64-windows-exp:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup
+        uses: "actions/setup-go@v4"
+        with:
+          go-version: '>=1.20'
+      - name: Build and Test
+        run: ci/x86_64-windows-exp.ps1
+      

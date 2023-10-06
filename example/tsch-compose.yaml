@@ -1,0 +1,28 @@
+namespace: "User"
+
+tasks:
+  task1:
+    name: "Task 1.1"
+    schedule_type: "MONTHLY"
+    run: "C:\\Windows\\System32\\cmd.exe"
+    arguments:
+      - "arg 1"
+      - "arg 2"
+    modifiers: "LASTDAY"
+    month: "*"
+    day: SUN
+    start_time:
+      hour: 12
+      minute: 30
+      second: 35
+    end_time:
+      hour: 13
+      minute: 30
+    start_date:
+      year: 2020
+      month: 12
+      day: 31
+    end_date:
+      year: 2021
+      month: 1
+      day: 1
