@@ -12,10 +12,10 @@ Copy-Item -Path "$PWD\example\tsch-compose.yaml" -Destination "$PWD\tsch-debug\t
 Write-Output "Running tests"
 Set-Location -Path "tsch-debug"
 
-.\tsch-compose.exe
+.\tsch-compose.exe up --verbose
 
 try {
-    $result = SCHTASKS /QUERY /FO TABLE | Select-String -Pattern "Task 1.1"
+    $result = SCHTASKS /QUERY /FO TABLE | Select-String -Pattern "TaskDaily"
     if ($null -eq $result) {
         throw "Task not found"
     }

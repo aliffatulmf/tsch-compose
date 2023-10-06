@@ -1,4 +1,4 @@
-package model
+package io
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func OpenComposeFile() *Compose {
+func ReadFile() *Compose {
 	file, err := os.ReadFile("tsch-compose.yaml")
 	if err != nil {
 		log.Fatalf("cannot open tsch-compose.yaml: %v", err)

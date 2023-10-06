@@ -1,28 +1,43 @@
 namespace: "User"
 
 tasks:
-  task1:
-    name: "Task 1.1"
+  TaskMonthly:
+    name: "Task Monthly"
     schedule_type: "MONTHLY"
     run: "C:\\Windows\\System32\\cmd.exe"
     arguments:
-      - "arg 1"
-      - "arg 2"
+      - "echo Hello"
+      - "echo World"
     modifiers: "LASTDAY"
-    month: "*"
-    day: SUN
-    start_time:
-      hour: 12
-      minute: 30
-      second: 35
-    end_time:
-      hour: 13
-      minute: 30
-    start_date:
-      year: 2020
-      month: 12
-      day: 31
-    end_date:
-      year: 2021
-      month: 1
-      day: 1
+    month: JAN
+    start_time: "22:50:10"
+    end_time: "23:50:10"
+    start_date: "08/23/2023"
+    end_date: "09/26/2024"
+  
+  TaskWeekly:
+    name: "Task Weekly"
+    schedule_type: "WEEKLY"
+    run: "C:\\Windows\\System32\\cmd.exe"
+    arguments:
+      - "echo Good"
+      - "echo Day"
+    modifiers: 2
+    start_time: "20:50:10"
+    end_time: "21:50:10"
+    start_date: "08/24/2023"
+    end_date: "09/27/2024" 
+
+  TaskDaily:
+    name: "Task Daily"
+    schedule_type: "DAILY"
+    run: "C:\\Windows\\System32\\cmd.exe"
+    arguments:
+      - "echo Good"
+      - "echo Night"
+    modifiers: 1
+    start_time: "00:00:00"
+    end_time: "01:00:00"
+    start_date: "08/24/2023"
+    end_date: "09/27/2024"
+  
