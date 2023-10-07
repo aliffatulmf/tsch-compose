@@ -1,7 +1,7 @@
 $env:GOOS = "windows"
 $env:GOARCH = "amd64"
 
-Write-Output "Building from source"
+Write-Host "Building from source"
 Remove-Item -Path "tsch-debug" -Recurse -Force -ErrorAction Ignore 
 New-Item -ItemType Directory -Path "tsch-debug"
 
@@ -9,16 +9,18 @@ go build -o "tsch-debug/tsch-compose.exe" main.go
 
 Copy-Item -Path "$PWD\example\tsch-compose.yaml" -Destination "$PWD\tsch-debug\tsch-compose.yaml" -Force
 
-Write-Output "Running tests"
+Write-Host "Running tests"
 Set-Location -Path "tsch-debug"
 
 .\tsch-compose.exe up --verbose
 
+Write-Host "Checking if task is created"
+
 try {
-    $result = SCHTASKS /QUERY /FO TABLE | Select-String -Pattern "TaskDaily"
-    if ($null -eq $result) {
+    $task = Get-ScheduledTask -TaskName "Task Daily" -ErrorAction Stop
+    if ($null -eq $task) {
         throw "Task not found"
     }
-}catch {
+} catch {
     Write-Error "$_"
 }
